@@ -16,10 +16,10 @@ def open_file():
 def save_file():
     data = []
     for contact in phone_book:
-        data.append(';'.join(list(contact.values())))
-        data = '\n'.join(data)
-        with open(path, 'w', encoding='UTF-8') as file:
-            file.write(data)
+        data.append(';'.join(contact.values()))
+    data = '\n'.join(data)
+    with open(path, 'w', encoding='UTF-8') as file:
+        file.write(data)
 
 
 def get_phone_book():
@@ -31,17 +31,18 @@ def add_contact(contact: dict):
 
 
 def change_contact(contact: dict, index: int):
-    phone_book.pop(index-1)
-    phone_book.insert(index-1, contact)
+    phone_book.pop(index - 1)
+    phone_book.insert(index - 1, contact)
 
 
-def search():
-    with open(path, 'r', encoding='UTF-8') as file:
-        book = file.read().split('\n')
-        inp = input('Введите данные поиска: ')
-    print('''
-Найдено:
-     ''')
-    for i in book:
-        if inp in i:
-            print(i)
+def search(search: str) -> list[dict]:
+    result = []
+    for contact in phone_book:
+        for field in contact.values():
+            if search.lower() in field.lower():
+                result.append(contact)
+    return result
+
+
+def delete(self, index: int):
+    self.pop(index)
