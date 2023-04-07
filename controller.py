@@ -27,4 +27,4 @@ def start():
                 index = int(
                     input("Введите номер контакта, который хотите удалить: "))
             case 8:
-                print(pb)
+                break
