@@ -1,2 +1,0 @@
-Piter;123;friend
-Alex;9090;good
